@@ -1,3 +1,8 @@
+<style>
+code {
+  white-space : pre-wrap !important;
+}
+</style>
 ## [pp-09: inline imports and infinite/conditional loops](https://www.practicepython.org/exercise/2014/04/02/09-guessing-game-one.html)
 ```markdown
 generate a random number between 1 and 9 (including 1 and 9). ask the user to

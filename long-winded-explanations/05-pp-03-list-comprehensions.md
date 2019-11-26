@@ -1,3 +1,8 @@
+<style>
+code {
+  white-space : pre-wrap !important;
+}
+</style>
 ## [pp-03: list comprehensions](https://www.practicepython.org/exercise/2014/02/15/03-list-less-than-ten.html)
 ```markdown
 take a list, say for example this one:
