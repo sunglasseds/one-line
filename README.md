@@ -449,3 +449,5 @@ the code written above is a factorial function. it will return `x` multiplied by
 (lambda a, b: a(a, b))(lambda f, d: [d.update({"g": input(d["g"])}), print("bye!") if d["g"] == "exit" else guessing_game({"g": "that's not a number!\nguess again! ", "n": d["n"]}) if not (__import__("re").findall(r"[0-9]+", d["g"])[0] != "") else print("you got it right!") if int(d["g"]) == d["n"] else guessing_game({"g": "too {}!\nguess again! ".format("high" if int(d["g"]) > d["n"] else "low"), "n": d["n"]})], {"g": "what number am i thinking of [1, 9]? ", "n": __import__("random").randint(1, 9)})
 ```
 guido was right this was a mistake
+
+i know it's a lot of work to do the next extra so i'll explain it in words and you'll have to do it yourself. what you have to do is create another key/value pair in the dictionary argument `d` and whenever you pass `d` to a function
