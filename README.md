@@ -20,7 +20,7 @@ print(add_two(4)) # => prints '6'
 which, if you want to be even more normal, would look like:
 ```python
 def add_two(n):
-	return x + 2
+    return x + 2
 
 print(add_two(4)) # => prints '6'
 ```
