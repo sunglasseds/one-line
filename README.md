@@ -127,9 +127,9 @@ just for consistency's sake i'll also throw in a cleaned version of our current 
 number = int(input("give me a number "))
 
 if number % 2 == 0:
-	print("your number is even")
+    print("your number is even")
 else:
-	print("your number is odd")
+    print("your number is odd")
 ```
 i'll also quickly do one of the extras with inline if statements to demonstrate the fact that you can nest these
 ```python
@@ -142,12 +142,12 @@ n = int(input("give me a number "))
 suff = ""
 
 if n % 4 == 0:
-	suff = "divisible by 4"
+    suff = "divisible by 4"
 else:
-	if n % 2 == 0:
-		suff = "even"
-	else:
-		suff = "odd"
+    if n % 2 == 0:
+        suff = "even"
+    else:
+        suff = "odd"
 
 print("your number is " + suff)
 ```
@@ -217,34 +217,34 @@ number = random.randint(1, 9)
 guess = int(input("what number am i thinking of [1, 9]? "))
 
 if number > guess:
-	print("too high")
+    print("too high")
 elif number < guess:
-	print("too low")
+    print("too low")
 else:
-	print("you got it right!")
+    print("you got it right!")
 ```
 right off the bat i'm going to write everything so it's inside a function, moving all my variables to the function's parameters
 ```python
 import random
 def guessing_game(number=random.randint(1, 9), guess=int(input("what number am i thinking of [1, 9]?"))):
-	if number > guess:
-		print("too high")
-	elif number < guess:
-		print("too low")
-	else:
-		print("you got it right!")
+    if number > guess:
+        print("too high")
+    elif number < guess:
+        print("too low")
+    else:
+        print("you got it right!")
 
 guessing_game()
 ```
 alright now, to do inline imports, you replace all instances of the library's name with `__import__("library_name")`. imports are already horribly expensive and should be reduced to a bare minimum in python, keep in mind your code will slow down once you introduce these into the situation
 ```python
 def guessing_game(number=__import__("random").randint(1, 9), guess=int(input("what number am i thinking of [1, 9]?"))):
-	if number > guess:
-		print("too high")
-	elif number < guess:
-		print("too low")
-	else:
-		print("you got it right!")
+    if number > guess:
+        print("too high")
+    elif number < guess:
+        print("too low")
+    else:
+        print("you got it right!")
 
 guessing_game()
 ```
@@ -272,27 +272,27 @@ number = random.randint(1, 9)
 guess = input("what number am i thinking of [1, 9]? ")
 
 def is_int(str):
-	try:
-		int(str)
-	except ValueError:
-		return False
-	return True
+    try:
+        int(str)
+    except ValueError:
+        return False
+    return True
 
 while True:
-	if guess == "exit":
-		print("bye!")
-		break
-	elif is_int(guess):
-		if int(guess) > number:
-			print("too high!")
-		elif int(guess) < number:
-			print("too low!")
-		else:
-			print("you got it right!")
-			break
-	else:
-		print("that's not a number! ")
-	guess = input("guess again! ")
+    if guess == "exit":
+        print("bye!")
+        break
+    elif is_int(guess):
+        if int(guess) > number:
+            print("too high!")
+        elif int(guess) < number:
+            print("too low!")
+        else:
+            print("you got it right!")
+            break
+    else:
+        print("that's not a number! ")
+    guess = input("guess again! ")
 ```
 code is going to be really long right now, so i'm going to write comments like this: `# *snip*` that will signify that that the code in there is the same as it was before, so examples don't take up as much of your screen
 
@@ -305,19 +305,19 @@ now, to make the while loop smaller, you can remove all the print statements and
 ```python
 # *snip*
 while True:
-	if guess == "exit":
-		print("bye!")
-		break
-	elif is_int(guess):
-		if int(guess) > number:
-			guess = input("too high!\nguess again! ")
-		elif int(guess) < number:
-			guess = input("too high!\nguess again! ")
-		else:
-			print("you got it right!")
-			break
-	else:
-		guess = input("that's not a number!\nguess again! ")
+    if guess == "exit":
+        print("bye!")
+        break
+    elif is_int(guess):
+        if int(guess) > number:
+            guess = input("too high!\nguess again! ")
+        elif int(guess) < number:
+            guess = input("too high!\nguess again! ")
+        else:
+            print("you got it right!")
+            break
+    else:
+        guess = input("that's not a number!\nguess again! ")
 ```
 now we're going to turn the loop into a recursive function. it will call itself if it decides it needs to go again based on various conditionals. since the function will take care of the initial guess, i'll also remove the first call to `input`
 ```python
@@ -326,18 +326,18 @@ number = __import__("random").randint(1, 9)
 def is_int(str): # *snip*
 
 def guessing_game(g):
-	guess = input(g)
-	if guess == "exit":
-		print("bye!")
-	elif is_int(guess):
-		if int(guess) > number:
-			guessing_game("too high!\nguess again! ")
-		elif int(guess) < number:
-			guessing_game("too low!\nguess again! ")
-		else:
-			print("you got it right!")
-	else:
-		guessing_game("that's not a number!\nguess again! ")
+    guess = input(g)
+    if guess == "exit":
+        print("bye!")
+    elif is_int(guess):
+        if int(guess) > number:
+            guessing_game("too high!\nguess again! ")
+        elif int(guess) < number:
+            guessing_game("too low!\nguess again! ")
+        else:
+            print("you got it right!")
+    else:
+        guessing_game("that's not a number!\nguess again! ")
 
 guessing_game("what number am i thinking of [1, 9]? ")
 ```
@@ -351,18 +351,18 @@ guess is an unnecessary variable! we can just set g to `input(g)`
 ```python
 # *snip*
 def guessing_game(g, n=__import__("random").randint(1, 9)):
-	g = input(g)
-	if g == "exit":
-		print("bye!")
-	elif is_int(g):
-		if int(g) > n:
-			guessing_game("too high!\nguess again! ", n=n)
-		elif int(g) < n:
-			guessing_game("too low!\nguess again! ", n=n)
-		else:
-			print("you got it right!")
-	else:
-		guessing_game("that's not a number!\nguess again! ", n=n)
+    g = input(g)
+    if g == "exit":
+        print("bye!")
+    elif is_int(g):
+        if int(g) > n:
+            guessing_game("too high!\nguess again! ", n=n)
+        elif int(g) < n:
+            guessing_game("too low!\nguess again! ", n=n)
+        else:
+            print("you got it right!")
+    else:
+        guessing_game("that's not a number!\nguess again! ", n=n)
 # *snip*
 ```
 `is_int` is sort of a problem here. i wrote it to be the normal way which you would check to see if a string can be converted to an integer, but if we're going to write this in one line, we can't have a `try`/`except` block in our code. this means we have to come up with a different solution. i decided to use regular expressions, but you can condense whatever you come up with as long as it doesn't contain a `try`/`catch` block. let's replace it:
@@ -370,33 +370,33 @@ def guessing_game(g, n=__import__("random").randint(1, 9)):
 import re
 
 def is_int(str):
-	return re.findall(r"[0-9]+", str)[0] != ""
+    return re.findall(r"[0-9]+", str)[0] != ""
 # *snip*
 ```
 and condense the import:
 ```python
 def is_int(str):
-	return __import__("re").findall(r"[0-9]+", str)[0] != ""
+    return __import__("re").findall(r"[0-9]+", str)[0] != ""
 # *snip*
 ```
 we're almost done! our code so far looks like:
 ```python
 def is_int(str):
-	return __import__("re").findall(r"[0-9]+", str)[0] != ""
+    return __import__("re").findall(r"[0-9]+", str)[0] != ""
 
 def guessing_game(g, n=__import__("random").randint(1, 9)):
-	g = input(g)
-	if g == "exit":
-		print("bye!")
-	elif is_int(g):
-		if int(g) > n:
-			guessing_game("too high!\nguess again! ", n=n)
-		elif int(g) < n:
-			guessing_game("too low!\nguess again! ", n=n)
-		else:
-			print("you got it right!")
-	else:
-		guessing_game("that's not a number!\nguess again! ", n=n)
+    g = input(g)
+    if g == "exit":
+        print("bye!")
+    elif is_int(g):
+        if int(g) > n:
+            guessing_game("too high!\nguess again! ", n=n)
+        elif int(g) < n:
+            guessing_game("too low!\nguess again! ", n=n)
+        else:
+            print("you got it right!")
+    else:
+        guessing_game("that's not a number!\nguess again! ", n=n)
 
 guessing_game("what number am i thinking of [1, 9]? ")
 ```
@@ -404,24 +404,24 @@ the next step is to make all of the control flow in `guessing_game` inline:
 ```python
 # *snip*
 def guessing_game(g, n=__import__("random").randint(1, 9)):
-	g = input(g)
-	print("bye!") if g == "exit" else guessing_game("that's not a number!\nguess again! ", n=n) if not  is_int(g) else print("you got it right!") if int(g) == n else guessing_game("too {}!\nguess again! ".format("high" if int(g) > n else "low"), n=n)
+    g = input(g)
+    print("bye!") if g == "exit" else guessing_game("that's not a number!\nguess again! ", n=n) if not  is_int(g) else print("you got it right!") if int(g) == n else guessing_game("too {}!\nguess again! ".format("high" if int(g) > n else "low"), n=n)
 
 guessing_game("what number am i thinking of [1, 9]? ")
 ```
 now we substitute the call to `is_int` with the actual function:
 ```python
 def guessing_game(g, n=__import__("random").randint(1, 9)):
-	g = input(g)
-	print("bye!") if g == "exit" else guessing_game("that's not a number!\nguess again! ", n=n) if not (__import__("re").findall(r"[0-9]+", g)[0] != "") else print("you got it right!") if int(g) == n else guessing_game("too {}!\nguess again! ".format("high" if int(g) > n else "low"), n=n)
+    g = input(g)
+    print("bye!") if g == "exit" else guessing_game("that's not a number!\nguess again! ", n=n) if not (__import__("re").findall(r"[0-9]+", g)[0] != "") else print("you got it right!") if int(g) == n else guessing_game("too {}!\nguess again! ".format("high" if int(g) > n else "low"), n=n)
 
 guessing_game("what number am i thinking of [1, 9]? ")
 ```
 so the next thing to take care of is the assignment of `input(g)` to `g`. python actually has a function that can change values: `dict.update`, which merges two dictionaries. all we have to do is put all of the arguments in a dictionary like so:
 ```python
 def guessing_game(d):
-	d.update({"g": input(d["g"])})
-	print("bye!") if d["g"] == "exit" else guessing_game({"g": "that's not a number!\nguess again! ", "n": d["n"]}) if not (__import__("re").findall(r"[0-9]+", d["g"])[0] != "") else print("you got it right!") if int(d["g"]) == d["n"] else guessing_game({"g": "too {}!\nguess again! ".format("high" if int(d["g"]) > d["n"] else "low"), "n": d["n"]})
+    d.update({"g": input(d["g"])})
+    print("bye!") if d["g"] == "exit" else guessing_game({"g": "that's not a number!\nguess again! ", "n": d["n"]}) if not (__import__("re").findall(r"[0-9]+", d["g"])[0] != "") else print("you got it right!") if int(d["g"]) == d["n"] else guessing_game({"g": "too {}!\nguess again! ".format("high" if int(d["g"]) > d["n"] else "low"), "n": d["n"]})
 
 guessing_game({"g": "what number am i thinking of [1, 9]? ", "n": __import__("random").randint(1, 9)})
 ```
@@ -432,7 +432,7 @@ that line, on the first call of the function, will change the argument `d` from 
 alright, next trick. you can put function calls in an array, which allows us to combine the two lines inside `guessing_game` like so:
 ```python
 def guessing_game(d):
-	[d.update({"g": input(d["g"])}), print("bye!") if d["g"] == "exit" else guessing_game({"g": "that's not a number!\nguess again! ", "n": d["n"]}) if not (__import__("re").findall(r"[0-9]+", d["g"])[0] != "") else print("you got it right!") if int(d["g"]) == d["n"] else guessing_game({"g": "too {}!\nguess again! ".format("high" if int(d["g"]) > d["n"] else "low"), "n": d["n"]})]
+    [d.update({"g": input(d["g"])}), print("bye!") if d["g"] == "exit" else guessing_game({"g": "that's not a number!\nguess again! ", "n": d["n"]}) if not (__import__("re").findall(r"[0-9]+", d["g"])[0] != "") else print("you got it right!") if int(d["g"]) == d["n"] else guessing_game({"g": "too {}!\nguess again! ".format("high" if int(d["g"]) > d["n"] else "low"), "n": d["n"]})]
 
 guessing_game({"g": "what number am i thinking of [1, 9]? ", "n": __import__("random").randint(1, 9)})
 ```
