@@ -33,9 +33,14 @@ by the way i'm going to be using pp in the headings it stands for "practice pyth
 ### [pp-01](https://www.practicepython.org/exercise/2014/01/29/01-character-input.html)
 alright here we go really normal things going on over here. the prompt is as follows:
 ```markdown
-create a program that asks the user to enter their name and their age. print out a message addressed to them that tells them the year that they will turn 100 years old
+create a program that asks the user to enter their name and their age. print
+out a message addressed to them that tells them the year that they will turn
+100 years old
 	---
 extras:
-- add on to the previous program by asking the user for another number and printing out that many copies of the previous message (hint: order of operations exists in python)
-- print out that many copies of the previous message on separate lines (hint: the string "\n" is the same as pressing the enter button)
+- add on to the previous program by asking the user for another number and
+  printing out that many copies of the previous message (hint: order of
+  operations exists in python)
+- print out that many copies of the previous message on separate lines (hint:
+  the string "\n" is the same as pressing the enter button)
 ```
