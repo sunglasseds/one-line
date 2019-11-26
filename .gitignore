@@ -104,3 +104,4 @@ venv.bak/
 .mypy_cache/
 
 z-combinator.txt
+*.py
