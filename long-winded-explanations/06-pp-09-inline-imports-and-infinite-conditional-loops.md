@@ -1,8 +1,3 @@
-<style>
-code {
-  white-space : pre-wrap !important;
-}
-</style>
 ## [pp-09: inline imports and infinite/conditional loops](https://www.practicepython.org/exercise/2014/04/02/09-guessing-game-one.html)
 ```markdown
 generate a random number between 1 and 9 (including 1 and 9). ask the user to
@@ -16,9 +11,9 @@ extras:
 print this out
 ```
 this is going to be a lot at once. we're going to start with probably the simplest concept of the three: inline imports! python does not want you doing this under any circumstances but i mean come on look at what you can do with it
-```python
+<div>```python
 (lambda n=__import__("random").randint(1, 9), g=int(input("what number am i thinking of [1,9]? ")): print({n > g: "too high", n < g: "too low", n == g: "you got it right!"}[True]))()
-```
+```</div>
 ok there's a bit going on here. i'm going to go through step by step from clean code this time because i've been thinking that may be clearer
 ```python
 import random

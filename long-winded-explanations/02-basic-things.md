@@ -1,8 +1,3 @@
-<style>
-code {
-  white-space : pre-wrap !important;
-}
-</style>
 ## basic things (boilerplate)
 
 before i even get to examples, i'm going to show you the very basic structure everything that looks like this takes:

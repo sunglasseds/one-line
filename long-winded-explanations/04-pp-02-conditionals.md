@@ -1,8 +1,3 @@
-<style>
-code {
-  white-space : pre-wrap !important;
-}
-</style>
 ## [pp-02: conditionals](https://www.practicepython.org/exercise/2014/02/05/02-odd-or-even.html)
 ok cool what are we doing now, pp
 ```markdown

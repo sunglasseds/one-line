@@ -1,8 +1,3 @@
-<style>
-code {
-  white-space : pre-wrap !important;
-}
-</style>
 ## [pp-01: input and string manipulation](https://www.practicepython.org/exercise/2014/01/29/01-character-input.html)
 alright here we go really normal things going on over here. the prompt is as follows:
 ```markdown
