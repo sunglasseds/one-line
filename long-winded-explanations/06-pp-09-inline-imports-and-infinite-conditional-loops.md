@@ -242,7 +242,7 @@ def guessing_game(d):
 
 guessing_game({"g": "what number am i thinking of [1, 9]? ", "n": __import__("random").randint(1, 9)})
 ```
-alright this next part involves some lambda calculus theory. we're going to use what's called a ("y-combinator")[https://en.wikipedia.org/wiki/Fixed-point_combinator#Fixed_point_combinators_in_lambda_calculus]. this is a specific lambda function that allows others to call themselves. in python, the y-combinator is written as:
+alright this next part involves some lambda calculus theory. we're going to use what's called a ["y-combinator"](https://en.wikipedia.org/wiki/Fixed-point_combinator#Fixed_point_combinators_in_lambda_calculus). this is a specific lambda function that allows others to call themselves. in python, the y-combinator is written as:
 ```python
 (lambda a, b: a(a, b))
 ```
