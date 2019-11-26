@@ -22,6 +22,7 @@ before i even get to examples, i'm going to show you the very basic structure ev
 `lambda` is syntactic sugar for a nameless, inline function, and i'm already abusing it by defining and calling it on the same line. below is what you probably should be writing:
 ```python
 add_two = lambda x: x+2
+
 print(add_two(4)) # => prints '6'
 ```
 which, if you want to be even more normal, would look like:
@@ -65,6 +66,7 @@ this particular one will work just fine without the lambda. this is extremely ra
 ```python
 name = input("what's your name? ")
 age = int(input("how old are you? "))
+
 print("{}, you will be 100 years old in the year {}".format(name, 2119 - age))
 ```
 if you're going to take away anything from this example, you should
@@ -74,8 +76,61 @@ i'll go over the extra stuff now. the practicepython page actually has the metho
 name = input("what's your name? ")
 age = int(input("how old are you? "))
 times = int(input("how many times do you want me to repeat myself? "))
+
 print("{}, you will be 100 years old in the year {}\n".format(name, 2119 - age) * times)
 ```
 and i mean you should know what to do from here based on what i just did with the other stuff and the huge all-caps text i typed a few minutes ago. i'm just gonna keep going
 
 ## [pp-02: conditionals](https://www.practicepython.org/exercise/2014/02/05/02-odd-or-even.html)
+ok cool what are we doing now, pp
+```markdown
+ask the user for a number. depending on whether the number is even or odd,
+print out an appropriate message to the user. Hint: how does an even / odd
+number react differently when divided by 2?
+    ----    ----    ----    ----    ----    ----    ----    ----    ----
+extras:
+- if the number is a multiple of 4, print out a different message.
+- ask the user for two numbers: one number to check (call it num) and one
+number to divide by (check). if check divides evenly into num, tell that to the
+user. if not, print a different appropriate message.
+```
+super easy. i won't even use lambda
+```python
+print("your number is " + ["even", "odd"][int(input("give me a number ")) % 2])
+```
+above is definitely the least intuitive and extensible way to do it, but it's also really nice-looking. here are two consecutive alternate solutions
+```python
+print("your number is " + {True: "even", False: "odd"}[int(input("give me a number ")) % 2 == 0])
+```
+```python
+print("your number is " + ["odd", "even"][int(int(input("give me a number ")) % 2 == 0)])
+```
+this is a common thing that you should do with these one-liners if you don't feel like using lambda. what's being done here is that instead of an `if`/`else` block, i wrote a dictionary indexed with `True` and `False`. depending on what the statement `int(input("give me a number ")) % 2 == 0` evaluates to, it will pick the value `"even"` or `"odd"`
+
+the second one is very similar. instead of getting an index from a dictionary, you could do the same with an array and convert `True`/`False` to an integer, which correspond to `1` and `0` respectively
+
+let's do another one just for fun
+```python
+(lambda n=int(input("give me a number ")): print("your number is " + "even" if n % 2 == 0 else "odd"))()
+```
+this one is probably the easiest to immediately understand. i've used lambda with default arguments instead of calling the function with `input("give me a number ")` because i like defining my values in the beginning of my code as opposed to the end, just as you'd normally structure a program, but either option will give you the same result.
+
+the other thing i've made use of is an inline `if`/`else` block, which is something you should never ever use in normal, readable code. the structure of these can be confusing so i'll put this reference here real quick:
+```python
+(value returned when the condition is True) if (condition) else (value returned when the condition is False)
+```
+and you should be good to go!
+
+you can use whichever method you feel like to do conditionals!! it's sorta like math where there's multiple ways to solve a problem with minimal differences in effort. whichever feels the most natural to you is probably the best one!
+
+just for consistency's sake i'll also throw in a cleaned version of our current code:
+```python
+number = int(input("give me a number "))
+
+if number % 2 == 0:
+	print("your number is even")
+else:
+	print("your number is odd")
+```
+
+with all of the stuff i've told you so far, you could pretty easily do the extras. if you're having trouble, write it out longer first and gradually condense. i sorta wanna move to more complicated things for now.
