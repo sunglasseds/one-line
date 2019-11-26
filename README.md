@@ -405,7 +405,7 @@ the next step is to make all of the control flow in `guessing_game` inline:
 # *snip*
 def guessing_game(g, n=__import__("random").randint(1, 9)):
     g = input(g)
-    print("bye!") if g == "exit" else guessing_game("that's not a number!\nguess again! ", n=n) if not  is_int(g) else print("you got it right!") if int(g) == n else guessing_game("too {}!\nguess again! ".format("high" if int(g) > n else "low"), n=n)
+    print("bye!") if g == "exit" else guessing_game("that's not a number!\nguess again! ", n=n) if not is_int(g) else print("you got it right!") if int(g) == n else guessing_game("too {}!\nguess again! ".format("high" if int(g) > n else "low"), n=n)
 
 guessing_game("what number am i thinking of [1, 9]? ")
 ```
