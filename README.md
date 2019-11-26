@@ -189,3 +189,67 @@ you can also call functions in the place of `(value when condition is true)` and
 [print(number) for number in [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89] if number < 5]
 ```
 ok cool moving on
+
+## [pp-09: inline imports and infinite/conditional loops](https://www.practicepython.org/exercise/2014/04/02/09-guessing-game-one.html)
+```markdown
+generate a random number between 1 and 9 (including 1 and 9). ask the user to guess the number, then tell them whether they guessed too low, too high, or exactly right (hint: remember to use the user input lessons from the very first exercise)
+extras:
+- keep the game going until the user types “exit”
+- keep track of how many guesses the user has taken, and when the game ends, print this out
+```
+this is going to be a lot at once. we're going to start with probably the simplest concept of the three: inline imports! python does not want you doing this under any circumstances but i mean come on look at what you can do with it
+```python
+(lambda n=__import__("random").randint(1, 9), g=int(input("what number am i thinking of [1,9]? ")): print({n > g: "too high", n < g: "too low", n == g: "you got it right!"}[True]))()
+```
+ok there's a bit going on here. i'm going to go through step by step from clean code this time because i've been thinking that may be clearer
+```python
+import random
+
+number = random.randint(1, 9)
+guess = int(input("what number am i thinking of [1, 9]? "))
+
+if number > guess:
+	print("too high")
+elif number < guess:
+	print("too low")
+else:
+	print("you got it right!")
+```
+right off the bat i'm going to write everything so it's inside a function, moving all my variables to the function's parameters
+```python
+import random
+def guessing_game(number=random.randint(1, 9), guess=int(input("what number am i thinking of [1, 9]?"))):
+	if number > guess:
+		print("too high")
+	elif number < guess:
+		print("too low")
+	else:
+		print("you got it right!")
+
+guessing_game()
+```
+alright now, to do inline imports, you replace all instances of the library's name with `__import__("library_name")`. imports are already horribly expensive and should be reduced to a bare minimum in python, keep in mind your code will slow down once you introduce these into the situation
+```python
+def guessing_game(number=__import__("random").randint(1, 9), guess=int(input("what number am i thinking of [1, 9]?"))):
+	if number > guess:
+		print("too high")
+	elif number < guess:
+		print("too low")
+	else:
+		print("you got it right!")
+
+guessing_game()
+```
+next, i decided that since all of the options are mutually exclusive (unlike the divisible by 4 example), i replaced the `if`/`elif`/`else` conditional with a dictionary whose keys are the conditions, and then i ask for the value with the index that evaluates to `True`
+
+i also shortened the variable names
+```python
+def guessing_game(n=__import__("random").randint(1, 9), g=int(input("what number am i thinking of [1, 9]?"))): print({n > g: "too high", n < g: "too low", n == g: "you got it right!"}[True])
+
+guessing_game()
+```
+and now that our function has been reduced to one line, it can be converted to lambda syntax easily (with a few copy-pastes):
+```python
+(lambda n=__import__("random").randint(1, 9), g=int(input("what number am i thinking of [1,9]? ")): print({n > g: "too high", n < g: "too low", n == g: "you got it right!"}[True]))()
+```
+and thats it!! wow. i bet everything will be easy and understandable from now on. let's do the first extra
