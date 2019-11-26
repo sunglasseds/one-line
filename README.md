@@ -451,3 +451,9 @@ the code written above is a factorial function. it will return `x` multiplied by
 guido was right this was a mistake
 
 i know it's a lot of work to do the next extra so i'll explain it in words and you'll have to do it yourself. what you have to do is create another key/value pair (we'll say it's `c`) in the dictionary and make it start at zero. whenever `f` is called, you have to add `"c": d["c"]+1` to the dictionary you call it with. then, on the print statement you win, append `str(d["c"])` to the output string with whatever accompanying text you want
+
+is there anything else to cover? i dunno if there's much else to cover
+
+i'll make a quick reference and split this up into chapters i guess. i've given you all the tools, so to speak, but i probably haven't explained them enough
+
+wait no i haven't ok go look into `map` and `filter` if you don't know what those are. otherwise i'm pretty much done here
