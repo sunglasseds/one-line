@@ -38,4 +38,4 @@ times = int(input("how many times do you want me to repeat myself? "))
 
 print("{}, you will be 100 years old in the year {}\n".format(name, 2119 - age) * times)
 ```
-and i mean you should know what to do from here based on what i just did with the other stuff and the huge all-caps text i typed a few minutes ago. i'm just gonna keep going
+and i mean you should know what to do from here i'm just gonna keep going
