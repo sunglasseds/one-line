@@ -17,7 +17,7 @@ always put your code in at least one lambda function:
 ```python
 # bad
 def add_two(x):
-	return x+2
+    return x+2
 print(add_two(4))
 
 # good
@@ -55,9 +55,9 @@ use inline `if`/`else` blocks
 # bad
 n = int(input())
 if n > 2:
-	print("greater than two")
+    print("greater than two")
 else:
-	print("ech")
+    print("ech")
 
 # good
 print("greater than two") if int(input()) > 2 else print("ech")
@@ -70,11 +70,11 @@ you can chain them pretty easily
 # bad
 n = int(input("give me a number "))
 if n % 4 == 0:
-	print("divisible by 4")
+    print("divisible by 4")
 elif n % 2 == 0:
-	print("even and not divisible by 4")
+    print("even and not divisible by 4")
 else:
-	print("odd")
+    print("odd")
 
 # good
 (lambda n: print("divisible by 4") if n % 4 == 0 else print("even and not divisible by 4") if n % 2 == 0 else print("odd"))(int(input("give me a number ")))
@@ -83,7 +83,7 @@ list comprehensions!
 ```python
 # bad
 for i in range(0, 10):
-	print(i)
+    print(i)
 
 # good
 [print(i) for i in range(0, 10)]
@@ -92,8 +92,8 @@ you can also chain them
 ```python
 # bad
 for i in range(10):
-	for j in range(i):
-		print(i*j)
+    for j in range(i):
+        print(i*j)
 
 # good
 [print(i*j) for i in range(10) for j in range(i)]
@@ -112,7 +112,7 @@ y-combinator
 ```python
 # bad
 while True:
-	print("hey")
+    print("hey")
 
 # good
 (lambda a, b: a(a, b))(lambda f, x: [print(x), f(f, x)][-1], "hey")
@@ -120,8 +120,8 @@ while True:
 # bad
 x = 0
 while x < 4:
-	print(x)
-	x += 1
+    print(x)
+    x += 1
 print("done!")
 
 # good
