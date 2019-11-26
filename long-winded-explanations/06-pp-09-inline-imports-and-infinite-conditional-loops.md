@@ -248,7 +248,7 @@ alright this next part involves some lambda calculus theory. we're going to use 
 ```
 and it can be used as follows:
 ```python
-(lambda a, b: a(a, b))(lambda f, x: x*f(f, x-1) if x > 0 else 1)(2)
+(lambda a, b: a(a, b))(lambda f, x: x*f(f, x-1) if x > 0 else 1, 2)
 ```
 the code written above is a factorial function. it will return `x` multiplied by the value of the function given `x-1` unless `x > 0`, at which point the function will resolve all of its iterations. it's a bit difficult to explain. all you need to know to be able to use it is that the first argument is the reference to the function and the second argument is the value you use. whenever you call the function inside the function, you need to make sure to pass the first argument to the function. once i write the above code using the y-combinator, we'll be done
 ```python
