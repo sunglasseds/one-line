@@ -57,7 +57,8 @@ next, i decided that since all of the options are mutually exclusive (unlike the
 
 i also shortened the variable names
 ```python
-def guessing_game(n=__import__("random").randint(1, 9), g=int(input("what number am i thinking of [1, 9]?"))): print({n > g: "too high", n < g: "too low", n == g: "you got it right!"}[True])
+def guessing_game(n=__import__("random").randint(1, 9), g=int(input("what number am i thinking of [1, 9]?"))):
+    print({n > g: "too high", n < g: "too low", n == g: "you got it right!"}[True])
 
 guessing_game()
 ```
