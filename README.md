@@ -5,6 +5,13 @@ helo im quak. i figured out how to write awful and illegible one-liners in pytho
 
 to structure this i'm going to go through a bunch of exercises i've found online and write them both ways, while also explaining what i'm doing in what is hopefully too much detail
 
+## intro
+![guido](https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Guido_van_Rossum_OSCON_2006.jpg/220px-Guido_van_Rossum_OSCON_2006.jpg)
+
+the soft bearded beer-toting bear pictured above is named "Guido van Rossum." he wrote the first version of python in about a month's worth of free time and is known as python's benevolent dictator for life. he has various [negative opinions](https://www.artima.com/weblogs/viewpost.jsp?thread=98196) on the inclusion of the techniques i am about to show you in python, which are usually referred to as "functional programming." this is essentially going to be a very convoluted and disgusting guide to functional programming as well as evidence that it should not be as prevalent in python as it is now
+
+i desperately hope that this never happens; i love that python gives me the freedom to write awful code like this
+
 ## basic things
 
 ### boilerplate
@@ -44,3 +51,8 @@ extras:
 - print out that many copies of the previous message on separate lines (hint:
   the string "\n" is the same as pressing the enter button)
 ```
+and after hours of deliberation i came up with this code that fulfills the basic requirement (not doing the extras yet):
+```python
+(lambda n: print("{}, you will be 100 years old in the year {}".format(input("What's your name? "), 2119 - int(input("How old are you? ")))))()
+```
+i am not using the `datetime` module because i don't think that's the intent of the exercise but there is a way to import libraries in one liners!!
