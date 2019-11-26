@@ -13,8 +13,10 @@ to structure this i'm going to go through a bunch of exercises i've found online
 - [inline imports / infinite/conditional loops](https://github.com/sunglasseds/one-line/blob/master/long-winded-explanations/06-pp-09-inline-imports-and-infinite-conditional-loops.md)
 
 ## quick reference
-always put your code in at least one lambda function:
+### basics
 ```python
+# -- always put your code in at least one lambda function --
+
 # bad
 def add_two(x):
     return x+2
@@ -22,27 +24,27 @@ print(add_two(4))
 
 # good
 (lambda x: print(x+2))(4)
-```
-don't do outside variables
-```python
+
+# -- don't do outside variables --
+
 # bad
 thing = 4
 print(2+thing)
 
 # good
 print(2+4)
-```
-this includes function calls like `input`
-```python
+
+# -- this includes function calls like `input` --
+
 # bad
 name = input("what's your name? ")
 print("hello, {}".format(name))
 
 # good
 print("hello, {}".format(input("what's your name? ")))
-```
-if you want to do multiple function calls, put them in arrays
-```python
+
+# -- if you want to do multiple function calls, put them in arrays --
+
 # bad
 print("yea")
 print("ok")
@@ -50,7 +52,7 @@ print("ok")
 # good
 [print("yea"), print("ok")]
 ```
-use inline `if`/`else` blocks
+### inline `if`/`else`
 ```python
 # bad
 n = int(input())
@@ -64,9 +66,9 @@ print("greater than two") if int(input()) > 2 else print("ech")
 
 # also good
 print("greater than two" if int(input()) > 2 else "ech")
-```
-you can chain them pretty easily
-```python
+
+# -- you can chain them pretty easily --
+
 # bad
 n = int(input("give me a number "))
 if n % 4 == 0:
@@ -79,7 +81,7 @@ else:
 # good
 (lambda n: print("divisible by 4") if n % 4 == 0 else print("even and not divisible by 4") if n % 2 == 0 else print("odd"))(int(input("give me a number ")))
 ```
-list comprehensions!
+### list comprehensions
 ```python
 # bad
 for i in range(0, 10):
@@ -87,9 +89,9 @@ for i in range(0, 10):
 
 # good
 [print(i) for i in range(0, 10)]
-```
-you can also chain them
-```python
+
+# -- you can also chain them --
+
 # bad
 for i in range(10):
     for j in range(i):
@@ -98,7 +100,7 @@ for i in range(10):
 # good
 [print(i*j) for i in range(10) for j in range(i)]
 ```
-inline imports
+### inline imports
 ```python
 # bad
 import random
@@ -108,7 +110,7 @@ print(random.randint(1, 10))
 # good
 print(__import__("random").randint(1, 10))
 ```
-y-combinator
+### y-combinator
 ```python
 # bad
 while True:
@@ -116,6 +118,10 @@ while True:
 
 # good
 (lambda a, b: a(a, b))(lambda f, x: [print(x), f(f, x)][-1], "hey")
+#                                                       ^
+#                                   indexed because i only want to return the function
+#                                   call, not `print` (which evaluates to `None`). -1 
+#                                   returns the last element of an array
 
 # bad
 x = 0
@@ -130,6 +136,4 @@ print("done!")
 # here to copy and paste
 (lambda a, b: a(a, b))
 ```
-when i use arrays like that, every function in the array is called, but only the final value (index `-1`) is returned
-
 have fun!
