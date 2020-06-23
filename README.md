@@ -1,6 +1,6 @@
 # one-line
 #### hilarious joke gone horribly wrong
-i figured out how to write awful and illegible one-liners in python over the course of about a year. i'm writing this primarily for friends in high school computer science classes so if someone else happens to come across this sorry if i seem a bit pedantic or something
+sorry if i seem a bit pedantic or something (looking back on this i am actually being very cryptic and hard to understand but im not actually maintaining this so good luck i guess)
 
 to structure this i'm going to go through a few exercises i've found online and write them both ways, while also explaining what i'm doing in what is hopefully too much detail
 
